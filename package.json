@@ -1,0 +1,14 @@
+{
+  "name": "fdcraft-bot-qq",
+  "version": "0.1.0",
+  "description": "QQ Bot for FDCraft",
+  "main": "index.js",
+  "type": "module",
+  "repository": "https://github.com/FDCraft/fdcraft-bot-qq.git",
+  "author": "Cursor-S <2779581071@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "minecraft-status": "^1.1.0",
+    "mirai-js": "^2.4.2"
+  }
+}
