@@ -24,14 +24,14 @@ bot.on(
         case "list":
           for (let i = 0; i < servers.length; i++) {
             const server = servers[i];
-            const stat = await MinecraftQuery.fullQuery(
-              server.host,
-              server.port,
-              5000
-            );
             let msgText;
             try {
-              msgText = `${server.name} 查询成功!\n在线人数: ${stat.players.online}/${stat.players.max}`;
+              const stat = await MinecraftQuery.fullQuery(
+                server.host,
+                server.port,
+                5000
+              );
+              msgText = `${server.name} 查询成功!\n游戏版本: ${stat.version.name}\n在线人数: ${stat.players.online}/${stat.players.max}`;
               for (let i = 0; i < stat.players.sample.length; i++) {
                 msgText += `\n- ${stat.players.sample[i]}`;
               }
