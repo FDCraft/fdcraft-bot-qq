@@ -35,11 +35,13 @@ yarn install
 {
   servers: [
     {
-      name: "FDCraft",
+      id: "fdc", // 代号
+      name: "复读世界𒆙",
       host: "example.org",
       port: 25565, // query 端口
     },
     {
+      id: "foo",
       name: "Example",
       host: "example.org",
       port: 11451,
