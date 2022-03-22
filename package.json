@@ -1,6 +1,6 @@
 {
   "name": "fdcraft-bot-qq",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "QQ Bot for FDCraft",
   "main": "index.js",
   "type": "module",
