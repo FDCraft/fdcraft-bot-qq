@@ -33,7 +33,7 @@ bot.on(
         return;
       }
       switch (data.text[0]) {
-        case "dev":
+        case "list":
           if (data.text.length > 1) {
             if (data.text[1] in serversIndex) {
               const server = serversIndex[data.text[1]];
