@@ -1,7 +1,6 @@
 import process from "process";
 import fs from "fs";
 import { Bot, Message, Middleware } from "mirai-js";
-import { MinecraftQuery } from "minecraft-status";
 
 const conf = JSON.parse(fs.readFileSync("config.json", "utf-8"));
 const servers = JSON.parse(fs.readFileSync("servers.json", "utf-8")).servers;
@@ -20,27 +19,23 @@ bot.on(
     .groupFilter(conf.groups)
     .textProcessor()
     .done(async (data) => {
-      switch (data.text) {
-        case "list":
-          for (let i = 0; i < servers.length; i++) {
-            const server = servers[i];
-            let msgText;
-            try {
-              const stat = await MinecraftQuery.fullQuery(
-                server.host,
-                server.port,
-                5000
-              );
-              msgText = `${server.name} 查询成功!\n游戏版本: ${stat.version.name}\n在线人数: ${stat.players.online}/${stat.players.max}`;
-              for (let i = 0; i < stat.players.sample.length; i++) {
-                msgText += `\n- ${stat.players.sample[i]}`;
-              }
-            } catch (error) {
-              msgText = `查询 ${server.name} 时发生错误: ${error}`;
-            }
+      data.text = data.text.split();
+      switch (data.text[0]) {
+        case "dev":
+          if (data.text.length > 1) {
+            // await bot.sendMessage({
+            //   group: data.sender.group.id,
+            //   message: new Message().addText(),
+            // });
+            return;
+          } else {
             await bot.sendMessage({
-              group: data.sender.group.id, // 群消息目前似乎在风控
-              message: new Message().addText(msgText),
+              group: data.sender.group.id,
+              message: new Message()
+                .addText("基岩社的叶宝\n---------------")
+                .addText(
+                  "\n---------------\n输入\u0022list 代号\u0022查看详情"
+                ),
             });
           }
       }
