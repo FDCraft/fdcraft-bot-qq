@@ -1,10 +1,10 @@
-import { MinecraftQuery } from "minecraft-status";
+import { queryBasic, queryFull } from "minecraft-server-util";
 
 export async function basicQuery(host, port, timeout) {
   let text;
   let err = false;
   try {
-    const stat = await MinecraftQuery.query(host, port, timeout);
+    const stat = await queryBasic(host, port);
     text = `[${stat.players.online}/${stat.players.max}]`;
   } catch (error) {
     err = true;
@@ -17,10 +17,10 @@ export async function fullQuery(host, port, timeout) {
   let text;
   let err = false;
   try {
-    const stat = await MinecraftQuery.fullQuery(host, port, timeout);
-    console.log(stat.description)
+    const stat = await queryFull(host, port);
+    console.log(stat.description);
     text = `\
-${stat.version.name} [${stat.players.online}/${stat.players.max}]
+${stat.version} [${stat.players.online}/${stat.players.max}]
 ${host}:${port}\
 ${stat.players.online === 0 ? "" : "\n---------------\n- "}\
 ${stat.players.sample.join("\n- ")}`;

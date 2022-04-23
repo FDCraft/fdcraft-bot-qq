@@ -40,13 +40,6 @@ form-data@^3.0.0:
     combined-stream "^1.0.8"
     mime-types "^2.1.12"
 
-iconv-lite@^0.5.1:
-  version "0.5.2"
-  resolved "https://registry.npmmirror.com/iconv-lite/-/iconv-lite-0.5.2.tgz#af6d628dccfb463b7364d97f715e4b74b8c8c2b8"
-  integrity sha512-kERHXvpSaB4aU3eANwidg79K8FlrN77m8G9V+0vOR3HYaRifrlwMEpT7ZBJqLSEIHnEgJTHcWK82wwLwwKwtag==
-  dependencies:
-    safer-buffer ">= 2.1.2 < 3"
-
 mime-db@1.52.0:
   version "1.52.0"
   resolved "https://registry.npmmirror.com/mime-db/-/mime-db-1.52.0.tgz#bbabcdc02859f4987301c856e3387ce5ec43bf70"
@@ -59,13 +52,17 @@ mime-types@^2.1.12:
   dependencies:
     mime-db "1.52.0"
 
-minecraft-status@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.npmmirror.com/minecraft-status/-/minecraft-status-1.1.0.tgz#413dea18b6d469002cbbb53d095589b0844974da"
-  integrity sha512-J57Ym9+FdJj63/Dk0p5NaWp4cNSdF/Fcjxdngpjl7t5x58wS2vPN/0zvnPRKEri8vAb/gEkadQfVaMtLYYQp+A==
+minecraft-motd-util@^1.1.9:
+  version "1.1.12"
+  resolved "https://registry.npmmirror.com/minecraft-motd-util/-/minecraft-motd-util-1.1.12.tgz#b1e3627329a770c015e5c32261510eb9ff0a2f81"
+  integrity sha512-5TuTRjrRupSTruea0nRC37r0FdhkS1O4wIJKAYfwJRCQd/X4Zyl/dVIs96h9UVW6N8jhIuz9pNkrDsqyN7VBdA==
+
+minecraft-server-util@^5.2.9:
+  version "5.2.9"
+  resolved "https://registry.npmmirror.com/minecraft-server-util/-/minecraft-server-util-5.2.9.tgz#01b2dfd91c0cfa9bafab9995885b07793c68db39"
+  integrity sha512-MLaST5JnTlutO8++8FRa4RBck2EM4QMfkdkJ8b4LsjSTHtZQihD/zma2Bks9weEJnH3Q0xWmb5wLScv/UNDQyg==
   dependencies:
-    iconv-lite "^0.5.1"
-    varint "^5.0.0"
+    minecraft-motd-util "^1.1.9"
 
 mirai-js@^2.4.2:
   version "2.4.2"
@@ -75,16 +72,6 @@ mirai-js@^2.4.2:
     axios "^0.24.0"
     form-data "^3.0.0"
     ws "^8.4.0"
-
-"safer-buffer@>= 2.1.2 < 3":
-  version "2.1.2"
-  resolved "https://registry.npmmirror.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
-  integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
-
-varint@^5.0.0:
-  version "5.0.2"
-  resolved "https://registry.npmmirror.com/varint/-/varint-5.0.2.tgz#5b47f8a947eb668b848e034dcfa87d0ff8a7f7a4"
-  integrity sha512-lKxKYG6H03yCZUpAGOPOsMcGxd1RHCu1iKvEHYDPmTyq2HueGhD73ssNBqqQWfvYs04G9iUFRvmAVLW20Jw6ow==
 
 ws@^8.4.0:
   version "8.5.0"
