@@ -1,9 +1,16 @@
 import process from "process";
 import fs from "fs";
+import { spawn } from "child_process";
+import { createServer } from "http";
 import { Bot, Message, Middleware } from "mirai-js";
 import { basicQuery, fullQuery } from "./mcquery.js";
+import createHandler from "github-webhook-handler";
 
 const conf = JSON.parse(fs.readFileSync("config.json", "utf-8"));
+const handler = createHandler({
+  path: conf.webhook.path,
+  secret: conf.webhook.secret,
+});
 const servers = JSON.parse(fs.readFileSync("servers.json", "utf-8")).servers;
 let serversIndex = new Object();
 for (const server of servers) {
@@ -74,6 +81,29 @@ bot.on(
       }
     })
 );
+
+createServer((req, res) => {
+  handler(req, res, (err) => {
+    res.statusCode = 404;
+    res.end("no such location");
+  });
+}).listen(conf.webhook.port);
+
+handler.on("error", (err) => {
+  console.error("Error:", err.message);
+});
+
+handler.on("push", (event) => {
+  console.log(
+    "Received a push event for %s to %s",
+    event.payload.repository.name,
+    event.payload.ref
+  );
+  const s = spawn("sh", ["./pull.sh"]);
+  s.stderr.on("data", (data) => {
+    console.log(`Pull Error: ${data}`);
+  });
+});
 
 process.on("SIGINT", async (_signal) => {
   console.log(`Process ${process.pid} interrupted. Closing...`);
