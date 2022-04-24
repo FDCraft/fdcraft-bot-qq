@@ -23,6 +23,11 @@ yarn install
     key: "ABCDEFGHIJKLMN", // 你的 mirai-api-http 中设置的 authKey
     qq: 123456789, // 机器人的 QQ 号
   },
+  webhook: {
+    path: "/webhook",
+    port: 8855,
+    secret: "YOURSECRET",
+  },
   groups: [1234567890, 9876543210], // 允许使用机器人的 QQ 群号
 }
 ```

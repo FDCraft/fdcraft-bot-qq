@@ -1,6 +1,6 @@
 {
   "name": "fdcraft-bot-qq",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "QQ Bot for FDCraft",
   "main": "index.js",
   "type": "module",
@@ -8,6 +8,7 @@
   "author": "Cursor-S <2779581071@qq.com>",
   "license": "MIT",
   "dependencies": {
+    "github-webhook-handler": "^1.0.0",
     "minecraft-server-util": "^5.2.9",
     "mirai-js": "^2.4.2"
   }
