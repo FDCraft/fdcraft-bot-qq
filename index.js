@@ -1,9 +1,10 @@
 import process from "process";
 import fs from "fs";
 import { spawn } from "child_process";
+import { createServer } from "http";
 import { Bot, Message, Middleware } from "mirai-js";
 import { basicQuery, fullQuery } from "./mcquery.js";
-import * as createHandler from "github-webhook-handler";
+import createHandler from "github-webhook-handler";
 
 const conf = JSON.parse(fs.readFileSync("config.json", "utf-8"));
 const handler = createHandler({
@@ -81,14 +82,12 @@ bot.on(
     })
 );
 
-http
-  .createServer((req, res) => {
-    handler(req, res, (err) => {
-      res.statusCode = 404;
-      res.end("no such location");
-    });
-  })
-  .listen(conf.webhook.port);
+createServer((req, res) => {
+  handler(req, res, (err) => {
+    res.statusCode = 404;
+    res.end("no such location");
+  });
+}).listen(conf.webhook.port);
 
 handler.on("error", (err) => {
   console.error("Error:", err.message);
