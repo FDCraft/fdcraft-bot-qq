@@ -53,4 +53,4 @@ yarn install
 ## 依赖
 
 - [Mirai-js](https://github.com/Drincann/Mirai-js)
-- [minecraft-status](https://github.com/mathhulk/minecraft-status)
+- [minecraft-server-util](https://github.com/PassTheMayo/minecraft-server-util)
